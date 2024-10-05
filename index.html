@@ -3,89 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puntos de Hechicería y Hechizos Nivel 1-5</title>
-    <link rel="stylesheet" href="hechizero.css"> <!-- Vinculando el CSS -->
+    <title>Mostrar Información por Niveles</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza el CSS aquí -->
 </head>
 <body>
-    <!-- Título Puntos de Hechicería -->
-    <div class="counter">
-        Puntos de Hechicería: <span id="availableCount">10</span>
+    <h1>Información Categorizada por Niveles</h1>
+    
+    <div id="hechizos">
+        <h2>Hechizos</h2>
+        <div id="info">Cargando información...</div>
     </div>
 
-    <!-- Tickets en Forma de Diamante (Puntos de Hechicería) -->
-    <div class="ticket-container">
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-        <div class="ticket" onclick="toggleActive(this)"></div>
-    </div>
+    <script>
+        // Función para mostrar los datos
+        function mostrarDatos(data) {
+            const infoDiv = document.getElementById('info');
+            infoDiv.innerHTML = ''; // Limpiar el contenido previo
 
-    <!-- Hechizos Nivel 1 -->
-    <div class="spell-level">
-        Hechizos Nivel 1:
-    </div>
-    <div class="spell-container">
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-    </div>
+            // Crear un objeto para agrupar los elementos por nivel
+            const levels = {};
+            data.items.forEach(item => {
+                if (!levels[item.nivel]) {
+                    levels[item.nivel] = [];
+                }
+                levels[item.nivel].push(item);
+            });
 
-    <!-- Detalles de Proyectil Mágico -->
-    <div class="hechizo-detalles">
-        <h3>Proyectil Mágico</h3>
-        <p><strong>Nivel:</strong> 1</p>
-        <p><strong>Daño:</strong> 1d4 + 1</p>
-        <button class="toggle-descripcion" onclick="mostrarDescripcion()">Mostrar Descripción</button>
-        <div class="descripcion" id="descripcion-proyectil">
-            <p><strong>Descripción:</strong> Cargando...</p>
-        </div>
-    </div>
+            // Recorrer los niveles y mostrarlos
+            for (let level = 1; level <= 5; level++) {
+                const levelDiv = document.createElement('div');
+                levelDiv.className = 'level';
+                const levelTitle = document.createElement('h3');
+                levelTitle.innerHTML = `Nivel ${level}`;
+                
+                // Agregar evento de clic para mostrar/ocultar hechizos
+                levelTitle.addEventListener('click', function() {
+                    const spellsContainer = levelDiv.querySelector('.spells-container');
+                    spellsContainer.style.display = spellsContainer.style.display === 'none' ? 'block' : 'none';
+                });
 
-    <!-- Hechizos Nivel 2 -->
-    <div class="spell-level">
-        Hechizos Nivel 2:
-    </div>
-    <div class="spell-container level2">
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-    </div>
+                levelDiv.appendChild(levelTitle);
 
-    <!-- Hechizos Nivel 3 -->
-    <div class="spell-level">
-        Hechizos Nivel 3:
-    </div>
-    <div class="spell-container level3">
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-    </div>
+                // Crear un contenedor para los hechizos
+                const spellsContainer = document.createElement('div');
+                spellsContainer.className = 'spells-container';
+                spellsContainer.style.display = 'none'; // Ocultar por defecto
 
-    <!-- Hechizos Nivel 4 -->
-    <div class="spell-level">
-        Hechizos Nivel 4:
-    </div>
-    <div class="spell-container level4">
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-        <div class="spell" onclick="toggleActive(this)"></div>
-    </div>
+                // Agregar diamantes según el nivel
+                const diamondContainer = document.createElement('div');
+                diamondContainer.className = 'diamond-container';
 
-    <!-- Hechizos Nivel 5 -->
-    <div class="spell-level">
-        Hechizos Nivel 5:
-    </div>
-    <div class="spell-container level5">
-        <div class="spell" onclick="toggleActive(this)"></div>
-    </div>
+                let diamondCount = 0;
+                if (level === 1) {
+                    diamondCount = 4; // 4 diamantes para nivel 1
+                } else if (level <= 4) {
+                    diamondCount = 3; // 3 diamantes para niveles 2, 3 y 4
+                } else {
+                    diamondCount = 1; // 1 diamante para nivel 5
+                }
 
-    <script src="hechzero.js"></script> <!-- Vinculando el JavaScript -->
+                for (let i = 0; i < diamondCount; i++) {
+                    const diamond = document.createElement('div');
+                    diamond.className = 'diamond';
+                    diamond.addEventListener('click', function() {
+                        diamond.classList.toggle('active'); // Cambiar clase al hacer clic
+                    });
+                    diamondContainer.appendChild(diamond);
+                }
+                levelDiv.appendChild(diamondContainer);
+
+                if (levels[level]) {
+                    levels[level].forEach(item => {
+                        // Crear el contenido del hechizo
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'item'; // Agregar la clase item
+                        let content = `${item.nombre}<br><div class="item-content">`;
+
+                        // Solo agregar las filas si tienen valor
+                        
+                        if (item.daño) {
+                            content += `<strong>Daño:</strong> ${item.daño}<br>`;
+                        }
+                        if (item.alcance) {
+                            content += `<strong>Alcance:</strong> ${item.alcance}<br>`;
+                        }
+                        if (item.Concentracion) {
+                            content += `<strong>Concentracion:</strong> ${item.Concentracion}<br>`;
+                        }
+                        content += `<strong>Descripción:</strong> ${item.descripcion}<br>`;
+                        content += '</div>';
+
+                        itemDiv.innerHTML = content;
+
+                        // Agregar evento de clic para mostrar/ocultar el contenido
+                        itemDiv.addEventListener('click', function() {
+                            const itemContent = itemDiv.querySelector('.item-content');
+                            itemContent.style.display = itemContent.style.display === 'none' ? 'block' : 'none'; // Toggle visibility
+                        });
+
+                        spellsContainer.appendChild(itemDiv); // Agregar hechizo al contenedor
+                    });
+                }
+
+                levelDiv.appendChild(spellsContainer); // Agregar contenedor de hechizos al nivel
+                infoDiv.appendChild(levelDiv); // Agregar el nivel completo al contenedor principal
+            }
+        }
+
+        // Intentar cargar datos desde el almacenamiento local
+        const cachedData = localStorage.getItem('hechizosData');
+
+        if (cachedData) {
+            // Si hay datos en caché, usarlos
+            const data = JSON.parse(cachedData);
+            mostrarDatos(data);
+        } else {
+            // Si no hay datos en caché, hacer fetch y almacenarlos
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Almacenar los datos en localStorage
+                    localStorage.setItem('hechizosData', JSON.stringify(data));
+                    mostrarDatos(data);
+                })
+                .catch(error => {
+                    console.error('Error al cargar el JSON:', error);
+                    document.getElementById('info').innerText = 'Error al cargar la información.';
+                });
+        }
+    </script>
 </body>
 </html>
