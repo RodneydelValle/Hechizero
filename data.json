@@ -1,0 +1,55 @@
+{
+  "items": [
+      {
+          "nombre": "Proyectil magico",
+          "nivel": 1,
+          "daño": "3D4 +1 POR PROYECTIL",
+          "alcance": "5m",
+          "Concentracion" : "",
+          "descripcion": "Descripción del elemento 1."
+          
+      },
+      {
+        "nombre": "Rayo de Hechizeria",
+        "nivel": 1,
+        "daño": "10",
+        "alcance": "5m",
+        "descripcion": "Descripción del elemento 1."
+    },
+
+
+      {
+          "nombre": "Elemento 2",
+          "nivel": 2,
+          "daño": "15",
+          "alcance": "10m",
+          "descripcion": "Descripción del elemento 2."
+      },
+
+      {
+          "nombre": "Elemento 4",
+          "nivel": 4,
+          "daño": "25",
+          "alcance": "20m",
+          "descripcion": "Descripción del elemento 4."
+      },
+      {
+        "nombre": "Muro de Agua",
+        "nivel": 3,
+        "daño": "5D8",
+        "alcance": "120 PIES",
+        "Concentracion": "Hasta 1 Minuto",
+        "CD": "DESTREZA",
+        "descripcion": "Puedes hacer un muro de hasta 60 pies (12 casillas) o un anillo de 4 casillas. A niveles superiores, cuando lanzas este hechizo usando un espacio de conjuros de nivel 5 o superior, el daño se incrementa en 1d8 por cada nivel de espacio de conjuros por encima de nivel 4."
+      },
+      
+      {
+        "nombre": "Cono de Frío",
+        "nivel": 5,
+        "daño": "8D8",
+        "alcance": "PERSONAL",
+        "descripcion": "Un estallido de frío intenso surge de tus manos. Cada criatura en un cono de 60 pies (12 casillas, 18 m) debe realizar una tirada de salvación de Constitución. Si falla la tirada, la criatura sufre 8d8 puntos de daño por frío, o la mitad del daño con una salvación con éxito. Si una criatura muere a causa de este daño, queda convertida en una estatua de hielo hasta que se funda."
+      }
+      
+  ]
+}
