@@ -65,11 +65,26 @@
                 for (let i = 0; i < diamondCount; i++) {
                     const diamond = document.createElement('div');
                     diamond.className = 'diamond';
+
+                    // Restaurar el estado del diamante desde localStorage
+                    const diamondKey = `level_${level}_diamond_${i}`;
+                    const savedState = localStorage.getItem(diamondKey);
+                    if (savedState === 'active') {
+                        diamond.classList.add('active');
+                    }
+
+                    // Agregar evento de clic para cambiar el estado y guardarlo
                     diamond.addEventListener('click', function() {
                         diamond.classList.toggle('active'); // Cambiar clase al hacer clic
+                        
+                        // Guardar el estado del diamante en localStorage
+                        const isActive = diamond.classList.contains('active') ? 'active' : 'inactive';
+                        localStorage.setItem(diamondKey, isActive);
                     });
+
                     diamondContainer.appendChild(diamond);
                 }
+
                 levelDiv.appendChild(diamondContainer);
 
                 if (levels[level]) {
