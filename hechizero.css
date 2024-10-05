@@ -1,0 +1,105 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.ticket-container, .spell-container {
+    display: grid;
+    grid-template-columns: repeat(5, 60px); /* Siempre 5 columnas */
+    grid-gap: 20px; /* Separación entre los tickets */
+    justify-content: center;
+}
+
+.spell-container.level2 {
+    grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 2: 3 columnas */
+}
+
+.spell-container.level3 {
+    grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 3: 3 columnas */
+}
+
+.spell-container.level4 {
+    grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 4: 3 columnas */
+}
+
+.spell-container.level5 {
+    grid-template-columns: repeat(1, 60px); /* Hechizos Nivel 5: 1 columna */
+}
+
+.ticket, .spell {
+    width: 60px;
+    height: 60px;
+    background-color: gray;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilo para los Puntos de Hechicería */
+.ticket.active {
+    background-color: #1d55ff;
+    box-shadow: 0 0 30px 15px rgba(255, 165, 0, 0.8); /* Glow naranja */
+    transform: scale(1.1);
+}
+
+/* Estilo para el resto de los puntos (hechizos) */
+.spell.active {
+    background-color: yellow;
+    box-shadow: 0 0 30px 15px rgba(255, 255, 0, 0.8); /* Glow amarillo */
+    transform: scale(1.1);
+}
+
+.ticket:hover, .spell:hover {
+    box-shadow: 0 0 15px 5px #FFFFFF; /* Efecto hover */
+}
+
+.counter, .spell-level {
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.counter {
+    margin-bottom: 20px; /* Añadido espacio entre el contador y la lista de tickets */
+}
+
+.hechizo-detalles {
+    color: white;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+    width: 80%;
+    max-width: 600px;
+}
+
+.hechizo-detalles h3 {
+    margin: 0 0 10px;
+    color: #ff9800;
+}
+
+.hechizo-detalles p {
+    margin: 5px 0;
+}
+
+.hechizo-detalles .toggle-descripcion {
+    background-color: #555;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.descripcion {
+    display: none;
+}
