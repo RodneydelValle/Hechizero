@@ -3,186 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ymir Hechizera nivel 10</title>
+    <title>Mostrar Información por Niveles</title>
     <link rel="stylesheet" href="styles.css"> <!-- Enlaza el CSS aquí -->
 </head>
 <body>
     <h1>Información Categorizada por Niveles</h1>
-    
-    <div id="sorcery-points">
+
+    <!-- Puntos de Hechicería -->
+    <div id="puntos-hechiceria">
         <h2>Puntos de Hechicería</h2>
-        <div id="sorcery-diamonds" class="diamond-container">
-            <!-- Aquí se generarán los 10 diamantes para Puntos de Hechicería -->
-        </div>
+        <div id="hechiceria-diamonds"></div>
     </div>
 
+    <!-- Hechizos por Niveles -->
     <div id="hechizos">
         <h2>Hechizos</h2>
         <div id="info">Cargando información...</div>
     </div>
 
+    <!-- Botón para limpiar el cache -->
+    <div id="limpiar">
+        <button id="limpiarCache">Limpiar Hoja</button>
+    </div>
+
     <script>
-        // Generar los 10 diamantes de Puntos de Hechicería
-        const sorceryDiamondsContainer = document.getElementById('sorcery-diamonds');
+        // Cargar el archivo JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const infoDiv = document.getElementById('info');
+                infoDiv.innerHTML = ''; // Limpiar el contenido previo
 
-        for (let i = 0; i < 10; i++) {
-            const sorceryDiamond = document.createElement('div');
-            sorceryDiamond.className = 'diamond sorcery';
-
-            // Restaurar el estado del diamante de hechicería desde localStorage
-            const sorceryDiamondKey = `sorcery_diamond_${i}`;
-            const savedState = localStorage.getItem(sorceryDiamondKey);
-            if (savedState === 'active') {
-                sorceryDiamond.classList.add('active');
-            }
-
-            // Evento para cambiar estado y guardar en localStorage
-            sorceryDiamond.addEventListener('click', function() {
-                sorceryDiamond.classList.toggle('active');
-                
-                // Guardar el estado del diamante en localStorage
-                const isActive = sorceryDiamond.classList.contains('active') ? 'active' : 'inactive';
-                localStorage.setItem(sorceryDiamondKey, isActive);
-            });
-
-            sorceryDiamondsContainer.appendChild(sorceryDiamond);
-        }
-
-        // Función para mostrar los datos del JSON
-        function mostrarDatos(data) {
-            const infoDiv = document.getElementById('info');
-            infoDiv.innerHTML = ''; // Limpiar el contenido previo
-
-            // Crear un objeto para agrupar los elementos por nivel
-            const levels = {};
-            data.items.forEach(item => {
-                if (!levels[item.nivel]) {
-                    levels[item.nivel] = [];
-                }
-                levels[item.nivel].push(item);
-            });
-
-            // Recorrer los niveles y mostrarlos
-            for (let level = 1; level <= 5; level++) {
-                const levelDiv = document.createElement('div');
-                levelDiv.className = 'level';
-                
-                // Crear un contenedor para el título y los diamantes
-                const levelHeader = document.createElement('div');
-                levelHeader.className = 'level-header';
-
-                const levelTitle = document.createElement('h3');
-                levelTitle.innerHTML = `Nivel ${level}`;
-
-                // Agregar evento de clic para mostrar/ocultar hechizos
-                levelTitle.addEventListener('click', function() {
-                    const spellsContainer = levelDiv.querySelector('.spells-container');
-                    spellsContainer.style.display = spellsContainer.style.display === 'none' ? 'block' : 'none';
+                // Crear un objeto para agrupar los elementos por nivel
+                const levels = {};
+                data.items.forEach(item => {
+                    if (!levels[item.nivel]) {
+                        levels[item.nivel] = [];
+                    }
+                    levels[item.nivel].push(item);
                 });
 
-                // Crear contenedor para los diamantes al lado del título
-                const diamondContainer = document.createElement('div');
-                diamondContainer.className = 'diamond-container level-diamonds';
+                // Recorrer los niveles y mostrarlos
+                for (let level = 1; level <= 5; level++) {
+                    const levelDiv = document.createElement('div');
+                    levelDiv.className = 'level';
 
-                let diamondCount = 0;
-                if (level === 1) {
-                    diamondCount = 4; // 4 diamantes para nivel 1
-                } else if (level <= 4) {
-                    diamondCount = 3; // 3 diamantes para niveles 2, 3 y 4
-                } else {
-                    diamondCount = 1; // 1 diamante para nivel 5
-                }
+                    // Contenedor flex para nivel y diamantes
+                    const levelHeader = document.createElement('div');
+                    levelHeader.className = 'level-header'; // Clase para flexbox
 
-                for (let i = 0; i < diamondCount; i++) {
-                    const diamond = document.createElement('div');
-                    diamond.className = 'diamond';
+                    const levelTitle = document.createElement('h3');
+                    levelTitle.innerHTML = `Nivel ${level}`;
 
-                    // Restaurar el estado del diamante desde localStorage
-                    const diamondKey = `level_${level}_diamond_${i}`;
-                    const savedState = localStorage.getItem(diamondKey);
-                    if (savedState === 'active') {
-                        diamond.classList.add('active');
+                    // Crear contenedor para los diamantes
+                    const diamondContainer = document.createElement('div');
+                    diamondContainer.className = 'diamond-container';
+
+                    let diamondCount = 0;
+                    if (level === 1) {
+                        diamondCount = 4; // 4 diamantes para nivel 1
+                    } else if (level <= 4) {
+                        diamondCount = 3; // 3 diamantes para niveles 2, 3 y 4
+                    } else {
+                        diamondCount = 1; // 1 diamante para nivel 5
                     }
 
-                    // Evento para cambiar el estado y guardarlo en localStorage
-                    diamond.addEventListener('click', function() {
-                        diamond.classList.toggle('active');
-                        
-                        // Guardar el estado del diamante en localStorage
-                        const isActive = diamond.classList.contains('active') ? 'active' : 'inactive';
-                        localStorage.setItem(diamondKey, isActive);
-                    });
-
-                    diamondContainer.appendChild(diamond);
-                }
-
-                // Agregar el título y los diamantes al contenedor de encabezado
-                levelHeader.appendChild(levelTitle);
-                levelHeader.appendChild(diamondContainer);
-                levelDiv.appendChild(levelHeader); // Agregar el encabezado al div del nivel
-
-                const spellsContainer = document.createElement('div');
-                spellsContainer.className = 'spells-container';
-                spellsContainer.style.display = 'none'; // Ocultar por defecto
-
-                if (levels[level]) {
-                    levels[level].forEach(item => {
-                        // Crear el contenido del hechizo en una caja separada
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'item'; // Clase para estilizar la caja de cada hechizo
-                        let content = `<div class="item-header">${item.nombre}</div><div class="item-content">`;
-
-                        // Solo agregar las filas si tienen valor
-                        if (item.daño) {
-                            content += `<strong>Daño:</strong> ${item.daño}<br>`;
-                        }
-                        if (item.alcance) {
-                            content += `<strong>Alcance:</strong> ${item.alcance}<br>`;
-                        }
-                        if (item.Concentracion) {
-                            content += `<strong>Concentracion:</strong> ${item.Concentracion}<br>`;
-                        }
-                        content += `<strong>Descripción:</strong> ${item.descripcion}<br>`;
-                        content += '</div>';
-
-                        itemDiv.innerHTML = content;
-
-                        // Agregar evento de clic para mostrar/ocultar el contenido del hechizo
-                        itemDiv.addEventListener('click', function() {
-                            const itemContent = itemDiv.querySelector('.item-content');
-                            itemContent.style.display = itemContent.style.display === 'none' ? 'block' : 'none'; // Toggle visibility
+                    for (let i = 0; i < diamondCount; i++) {
+                        const diamond = document.createElement('div');
+                        diamond.className = 'diamond';
+                        diamond.addEventListener('click', function() {
+                            diamond.classList.toggle('active'); // Cambiar clase al hacer clic
                         });
+                        diamondContainer.appendChild(diamond);
+                    }
 
-                        spellsContainer.appendChild(itemDiv); // Agregar hechizo al contenedor
+                    levelHeader.appendChild(levelTitle);
+                    levelHeader.appendChild(diamondContainer);
+                    levelDiv.appendChild(levelHeader); // Agregar nivel y diamantes al nivelDiv
+
+                    // Crear un contenedor para los hechizos
+                    const spellsContainer = document.createElement('div');
+                    spellsContainer.className = 'spells-container';
+                    spellsContainer.style.display = 'none'; // Ocultar por defecto
+
+                    // Agregar evento de clic para mostrar/ocultar hechizos
+                    levelTitle.addEventListener('click', function() {
+                        spellsContainer.style.display = spellsContainer.style.display === 'none' ? 'block' : 'none';
                     });
+
+                    if (levels[level]) {
+                        levels[level].forEach(item => {
+                            // Crear el contenido del hechizo
+                            const itemDiv = document.createElement('div');
+                            itemDiv.className = 'item'; // Agregar la clase item
+                            let content = `${item.nombre}<br><div class="item-content">`;
+
+                            // Solo agregar las filas si tienen valor
+                            if (item.daño) {
+                                content += `<strong>Daño:</strong> ${item.daño}<br>`;
+                            }
+                            if (item.alcance) {
+                                content += `<strong>Alcance:</strong> ${item.alcance}<br>`;
+                            }
+                            if (item.Concentracion) {
+                                content += `<strong>Concentración:</strong> ${item.Concentracion}<br>`;
+                            }
+                            content += `<strong>Descripción:</strong> ${item.descripcion}<br>`;
+                            content += '</div>';
+
+                            itemDiv.innerHTML = content;
+
+                            // Agregar evento de clic para mostrar/ocultar el contenido
+                            itemDiv.addEventListener('click', function() {
+                                const itemContent = itemDiv.querySelector('.item-content');
+                                itemContent.style.display = itemContent.style.display === 'none' ? 'block' : 'none'; // Toggle visibility
+                            });
+
+                            spellsContainer.appendChild(itemDiv); // Agregar hechizo al contenedor
+                        });
+                    }
+
+                    levelDiv.appendChild(spellsContainer); // Agregar contenedor de hechizos al nivel
+                    infoDiv.appendChild(levelDiv); // Agregar el nivel completo al contenedor principal
                 }
+            })
+            .catch(error => {
+                console.error('Error al cargar el JSON:', error);
+                document.getElementById('info').innerText = 'Error al cargar la información.';
+            });
 
-                levelDiv.appendChild(spellsContainer); // Agregar contenedor de hechizos al nivel
-                infoDiv.appendChild(levelDiv); // Agregar el nivel completo al contenedor principal
-            }
-        }
-
-        // Intentar cargar datos desde el almacenamiento local
-        const cachedData = localStorage.getItem('hechizosData');
-
-        if (cachedData) {
-            // Si hay datos en caché, usarlos
-            const data = JSON.parse(cachedData);
-            mostrarDatos(data);
-        } else {
-            // Si no hay datos en caché, hacer fetch y almacenarlos
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    // Almacenar los datos en localStorage
-                    localStorage.setItem('hechizosData', JSON.stringify(data));
-                    mostrarDatos(data);
-                })
-                .catch(error => {
-                    console.error('Error al cargar el JSON:', error);
-                    document.getElementById('info').innerText = 'Error al cargar la información.';
-                });
-        }
+        // Limpiar localStorage y refrescar la página
+        document.getElementById('limpiarCache').addEventListener('click', function() {
+            localStorage.clear(); // Limpiar el cache local
+            location.reload(); // Recargar la página
+        });
     </script>
 </body>
 </html>
