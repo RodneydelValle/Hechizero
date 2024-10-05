@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Puntos de Hechicería y Hechizos Nivel 1-5</title>
+        <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .ticket-container, .spell-container {
+            display: grid;
+            grid-template-columns: repeat(5, 60px); /* Siempre 5 columnas */
+            grid-gap: 20px; /* Separación entre los tickets */
+            justify-content: center;
+        }
+
+        .spell-container.level2 {
+            grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 2: 3 columnas */
+        }
+
+        .spell-container.level3 {
+            grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 3: 3 columnas */
+        }
+
+        .spell-container.level4 {
+            grid-template-columns: repeat(3, 60px); /* Hechizos Nivel 4: 3 columnas */
+        }
+
+        .spell-container.level5 {
+            grid-template-columns: repeat(1, 60px); /* Hechizos Nivel 5: 1 columna */
+        }
+
+        .ticket, .spell {
+            width: 60px;
+            height: 60px;
+            background-color: gray;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Estilo para los Puntos de Hechicería */
+        .ticket.active {
+            background-color: #1d55ff;
+            box-shadow: 0 0 30px 15px rgba(255, 165, 0, 0.8); /* Glow naranja */
+            transform: scale(1.1);
+        }
+
+        /* Estilo para el resto de los puntos (hechizos) */
+        .spell.active {
+            background-color: yellow;
+            box-shadow: 0 0 30px 15px rgba(255, 255, 0, 0.8); /* Glow amarillo */
+            transform: scale(1.1);
+        }
+
+        .ticket:hover, .spell:hover {
+            box-shadow: 0 0 15px 5px #FFFFFF; /* Efecto hover */
+        }
+
+        .counter, .spell-level {
+            color: white;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .counter {
+            margin-bottom: 20px; /* Añadido espacio entre el contador y la lista de tickets */
+        }
+
+        .hechizo-detalles {
+            color: white;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .hechizo-detalles h3 {
+            margin: 0 0 10px;
+            color: #ff9800;
+        }
+
+        .hechizo-detalles p {
+            margin: 5px 0;
+        }
+
+        .hechizo-detalles .toggle-descripcion {
+            background-color: #555;
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .descripcion {
+            display: none;
+        }
+    </style>
+    </head>
+    <body>
+        <!-- Título Puntos de Hechicería -->
+        <div class="counter">
+            Puntos de Hechicería: <span id="availableCount">10</span>
+        </div>
+
+        <!-- Tickets en Forma de Diamante (Puntos de Hechicería) -->
+        <div class="ticket-container">
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+            <div class="ticket" onclick="toggleActive(this)"></div>
+        </div>
+
+        <!-- Hechizos Nivel 1 -->
+        <div class="spell-level">
+            Hechizos Nivel 1:
+        </div>
+        <div class="spell-container">
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+        </div>
+
+<!-- Detalles de Proyectil Mágico -->
+<div class="hechizo-detalles">
+    <h3>Proyectil Mágico</h3>
+    <p><strong>Nivel:</strong> 1</p>
+    <p><strong>Daño:</strong> 1d4 + 1</p>
+    <button class="toggle-descripcion" onclick="mostrarDescripcion()">Mostrar Descripción</button>
+    <div class="descripcion" id="descripcion-proyectil">
+        <p><strong>Descripción:</strong> Cargando...</p>
+    </div>
+</div>
+
+        <!-- Hechizos Nivel 2 -->
+        <div class="spell-level">
+            Hechizos Nivel 2:
+        </div>
+        <div class="spell-container level2">
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+        </div>
+
+        <!-- Hechizos Nivel 3 -->
+        <div class="spell-level">
+            Hechizos Nivel 3:
+        </div>
+        <div class="spell-container level3">
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+        </div>
+
+        <!-- Hechizos Nivel 4 -->
+        <div class="spell-level">
+            Hechizos Nivel 4:
+        </div>
+        <div class="spell-container level4">
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+            <div class="spell" onclick="toggleActive(this)"></div>
+        </div>
+
+        <!-- Hechizos Nivel 5 -->
+        <div class="spell-level">
+            Hechizos Nivel 5:
+        </div>
+        <div class="spell-container level5">
+            <div class="spell" onclick="toggleActive(this)"></div>
+        </div>
+
+        <script>
+        function toggleActive(element) {
+            element.classList.toggle('active');
+            updateAvailableCount(); // Actualiza el contador cada vez que se cambia el estado de un ticket
+        }
+
+        function updateAvailableCount() {
+            const availableTickets = document.querySelectorAll('.ticket:not(.active)').length;
+            document.getElementById('availableCount').textContent = availableTickets;
+        }
+
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        async function mostrarDescripcion() {
+    const descripcionDiv = document.getElementById('descripcion-proyectil');
+    
+    // Verificar si la descripción ya está visible
+    if (descripcionDiv.style.display === 'block') {
+        descripcionDiv.style.display = 'none'; // Ocultar la descripción
+        return;
+    }
+
+    // Cargar el JSON de hechizos
+    const response = await fetch('HECHIZOS_NIVEL_1.json');
+    const data = await response.json();
+
+    // Encontrar el hechizo "Proyectil Mágico"
+    const hechizo = data.hechizos.find(h => h.nombre === "Proyectil Mágico");
+
+    // Actualizar el contenido de la descripción
+    if (hechizo) {
+        descripcionDiv.innerHTML = `
+            <p><strong>Descripción:</strong> ${hechizo.descripcion}</p>
+            <p><strong>Alcance:</strong> ${hechizo.alcance}</p>
+            <p><strong>Duración:</strong> ${hechizo.duración}</p>
+        `;
+        descripcionDiv.style.display = 'block'; // Mostrar la descripción
+    } else {
+        alert('Hechizo no encontrado');
+    }
+}
+
+
+    </script>
+    </body>
+</html>
