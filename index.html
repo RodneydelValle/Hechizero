@@ -9,13 +9,46 @@
 <body>
     <h1>Información Categorizada por Niveles</h1>
     
+    <div id="sorcery-points">
+        <h2>Puntos de Hechicería</h2>
+        <div id="sorcery-diamonds" class="diamond-container">
+            <!-- Aquí se generarán los 10 diamantes para Puntos de Hechicería -->
+        </div>
+    </div>
+
     <div id="hechizos">
         <h2>Hechizos</h2>
         <div id="info">Cargando información...</div>
     </div>
 
     <script>
-        // Función para mostrar los datos
+        // Generar los 10 diamantes de Puntos de Hechicería
+        const sorceryDiamondsContainer = document.getElementById('sorcery-diamonds');
+
+        for (let i = 0; i < 10; i++) {
+            const sorceryDiamond = document.createElement('div');
+            sorceryDiamond.className = 'diamond sorcery';
+
+            // Restaurar el estado del diamante de hechicería desde localStorage
+            const sorceryDiamondKey = `sorcery_diamond_${i}`;
+            const savedState = localStorage.getItem(sorceryDiamondKey);
+            if (savedState === 'active') {
+                sorceryDiamond.classList.add('active');
+            }
+
+            // Evento para cambiar estado y guardar en localStorage
+            sorceryDiamond.addEventListener('click', function() {
+                sorceryDiamond.classList.toggle('active');
+                
+                // Guardar el estado del diamante en localStorage
+                const isActive = sorceryDiamond.classList.contains('active') ? 'active' : 'inactive';
+                localStorage.setItem(sorceryDiamondKey, isActive);
+            });
+
+            sorceryDiamondsContainer.appendChild(sorceryDiamond);
+        }
+
+        // Función para mostrar los datos del JSON
         function mostrarDatos(data) {
             const infoDiv = document.getElementById('info');
             infoDiv.innerHTML = ''; // Limpiar el contenido previo
@@ -73,9 +106,9 @@
                         diamond.classList.add('active');
                     }
 
-                    // Agregar evento de clic para cambiar el estado y guardarlo
+                    // Evento para cambiar el estado y guardarlo en localStorage
                     diamond.addEventListener('click', function() {
-                        diamond.classList.toggle('active'); // Cambiar clase al hacer clic
+                        diamond.classList.toggle('active');
                         
                         // Guardar el estado del diamante en localStorage
                         const isActive = diamond.classList.contains('active') ? 'active' : 'inactive';
@@ -95,7 +128,6 @@
                         let content = `${item.nombre}<br><div class="item-content">`;
 
                         // Solo agregar las filas si tienen valor
-                        
                         if (item.daño) {
                             content += `<strong>Daño:</strong> ${item.daño}<br>`;
                         }
