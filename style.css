@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+}
+
+#info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.level {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.item {
+    background-color: #333; /* Color de fondo gris oscuro */
+    border: 1px solid #ccc; /* Borde gris claro */
+    padding: 10px; /* Espacio interno */
+    margin: 10px 0; /* Margen entre elementos */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el elemento */
+}
+
+.item-content {
+    display: none; /* Ocultar el contenido inicialmente */
+    color: #ddd; /* Color del texto del contenido adicional */
+}
+
+h1, h2 {
+    color: #fff; /* Títulos en blanco */
+}
+
+.diamond-container {
+    display: flex; /* Usar flexbox para alinear los diamantes */
+    margin-top: 10px; /* Espacio arriba del contenedor */
+}
+
+.diamond {
+    width: 30px; /* Ancho del diamante */
+    height: 30px; /* Alto del diamante */
+    background-color: #555; /* Color gris para el diamante */
+    margin-right: 10px; /* Espacio entre diamantes */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Forma de diamante */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el diamante */
+}
+
+.diamond.active {
+    background-color: #ff0; /* Color amarillo cuando está activo */
+    box-shadow: 0 0 10px 2px #ff0; /* Brillo amarillo */
+}
