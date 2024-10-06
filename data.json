@@ -1,14 +1,13 @@
 {
   "items": [
-      {
-          "nombre": "Proyectil magico",
-          "nivel": 1,
-          "daño": "3D4 +1 POR PROYECTIL",
-          "alcance": "5m",
-          "Concentracion" : "",
-          "descripcion": "Descripción del elemento 1."
-          
-      },
+    {
+      "nombre": "Proyectil mágico",
+      "nivel": 1,
+      "daño": "3D4 +1 por proyectil",
+      "alcance": "5 m",
+      "descripcion": "Creas tres dardos brillantes de fuerza mágica. Cada dardo impacta a una criatura de tu elección que puedas ver dentro del alcance. Un dardo inflige 1d4 + 1 puntos de daño por fuerza a su objetivo. Todos los dardos impactan a la vez, y los puedes dirigir para que impacten a una criatura o a varias.\nA niveles superiores: Cuando lanzas este hechizo usando un espacio de conjuros de nivel 2 o superior, el conjuro crea un dardo más por cada nivel de espacio de conjuros por encima de nivel 1."
+  },
+  
       {
         "nombre": "Rayo de Hechizeria",
         "nivel": 1,
@@ -42,6 +41,17 @@
         "CD": "DESTREZA",
         "descripcion": "Puedes hacer un muro de hasta 60 pies (12 casillas) o un anillo de 4 casillas. A niveles superiores, cuando lanzas este hechizo usando un espacio de conjuros de nivel 5 o superior, el daño se incrementa en 1d8 por cada nivel de espacio de conjuros por encima de nivel 4."
       },
+      
+      {
+        "nombre": "Bola de Fuego",
+        "nivel": 3,
+        "daño": "8d6",
+        "alcance": "120 pies",
+        "concentracion": "No",
+        "CD": "Destreza",
+        "descripcion": "Un rayo brillante resplandece desde tu dedo apuntando a un lugar que eliges dentro del rango y luego estalla con un rugido grave en una explosión de llamas. Cada criatura en un radio de esfera de 20 pies (4 casillas, 6 m) centrado en ese punto debe realizar una tirada de salvación de Destreza. El objetivo sufre 8d6 puntos de daño por fuego en una salvación fallida, o la mitad del total de daño en una salvación con éxito. El fuego se extiende por las esquinas e incendia objetos inflamables en el área que no estén sujetos ni transportados.\nA niveles superiores: cuando lanzas este hechizo usando un espacio de conjuros de nivel 4 o superior, el daño se incrementa en 1d6 por cada nivel de espacio de conjuros por encima del nivel 3."
+      },
+      
       
       {
         "nombre": "Cono de Frío",
