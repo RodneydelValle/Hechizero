@@ -1,21 +1,32 @@
 {
   "items": [
     {
-      "nombre": "Proyectil mágico",
+      "nombre": "Proyectil mágico : 3D4 +1 por proyectil",
       "nivel": 1,
       "daño": "3D4 +1 por proyectil",
       "alcance": "5 m",
       "descripcion": "Creas tres dardos brillantes de fuerza mágica. Cada dardo impacta a una criatura de tu elección que puedas ver dentro del alcance. Un dardo inflige 1d4 + 1 puntos de daño por fuerza a su objetivo. Todos los dardos impactan a la vez, y los puedes dirigir para que impacten a una criatura o a varias.\nA niveles superiores: Cuando lanzas este hechizo usando un espacio de conjuros de nivel 2 o superior, el conjuro crea un dardo más por cada nivel de espacio de conjuros por encima de nivel 1."
-  },
-  
-      {
-        "nombre": "Rayo de Hechizeria",
-        "nivel": 1,
-        "daño": "10",
-        "alcance": "5m",
-        "descripcion": "Descripción del elemento 1."
+      
     },
 
+        {
+          "nombre": "Rayo de Hechicería : 1d12 (ATTAQUE)",
+          "nivel": 1,
+          "daño": "1d12",
+          "Concentracion": "10 minutos",
+          "alcance": "30 pies",
+          "descripcion": "Al lanzar el conjuro Rayo de hechicería, un rayo de energía chisporroteante alcanza a una criatura que se encuentre dentro del alcance, formando un arco constante similar a un relámpago entre el objetivo y tú. Haces un ataque de conjuro a distancia contra la criatura. Si impactas, el objetivo sufre 1d12 de daño de relámpago y, en cada uno de tus turnos, hasta el final del conjuro, puedes usar tu acción para infligir automáticamente otros 1d12 de daño de relámpago a la criatura. El conjuro termina si utilizas tu acción para cualquier otra cosa, o si en algún momento el objetivo queda fuera del alcance o consigue tener cobertura completa respecto a ti. Si lanzas este conjuro usando un espacio de nivel 2 o superior, el daño inicial aumenta en 1d12 por cada nivel por encima de 1 que tenga el espacio utilizado."
+        },
+
+    
+ {
+          "nombre": "Imagen Múltiple",
+          "nivel": 1,
+          "daño": "",
+          "alcance": "PERSONAL",
+          "descripcion": "Tres duplicados ilusorios de ti mismo aparecen en tu espacio. Hasta que el conjuro finalice, las copias se mueven contigo e imitan tus acciones, intercambiando su posición de manera que resulta imposible saber qué imagen es real. Puedes usar tu acción para disipar las copias ilusorias. Cada vez que una criatura te elija como objetivo de un ataque mientras dure el conjuro, lanza un d20 para determinar si el ataque tiene por objetivo a uno de tus dobles en vez de a ti. Si tienes tres copias, debes sacar un 6 o más para cambiar el objetivo del ataque a un doble. Con dos copias, debes sacar un 8 o más. Con una copia, debes sacar un 11 o más. La CA de las copias es 10 + tu modificador de Destreza. Si un ataque impacta a un doble, el doble es destruido. Un doble sólo puede ser destruido por un ataque que le impacte. Ignora todo el resto de daño y efectos. El conjuro finaliza cuando las tres copias son destruidas. Una criatura no se ve afectada por el conjuro si no puede ver, si depende de otro sentido distinto a la vista, como la vista ciega, o si puede percibir las ilusiones como falsas, como con visión verdadera."
+          
+        },
 
       {
           "nombre": "Elemento 2",
