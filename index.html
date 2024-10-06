@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ymir Hechizera nivel 10</title>
+    <title>Mostrar Información por Niveles</title>
     <link rel="stylesheet" href="styles.css"> <!-- Enlaza el CSS aquí -->
 </head>
 <body>
-    <h1>Información Categorizada por Niveles</h1>
+    <h1>Ymir Hechizera nivel 10</h1>
 
     <!-- Puntos de Hechicería -->
     <div id="puntos-hechiceria">
         <h2>Puntos de Hechicería</h2>
-        <div id="hechiceria-diamonds"></div>
+        <div id="hechiceria-diamonds">
+            <!-- Filas de diamantes -->
+            <div class="diamond-row">
+                <div class="diamond" data-diamond-id="diamond1"></div>
+                <div class="diamond" data-diamond-id="diamond2"></div>
+                <div class="diamond" data-diamond-id="diamond3"></div>
+                <div class="diamond" data-diamond-id="diamond4"></div>
+                <div class="diamond" data-diamond-id="diamond5"></div>
+            </div>
+            <div class="diamond-row">
+                <div class="diamond" data-diamond-id="diamond6"></div>
+                <div class="diamond" data-diamond-id="diamond7"></div>
+                <div class="diamond" data-diamond-id="diamond8"></div>
+                <div class="diamond" data-diamond-id="diamond9"></div>
+                <div class="diamond" data-diamond-id="diamond10"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Hechizos por Niveles -->
@@ -125,6 +141,7 @@
                             if (item.daño) {
                                 content += `<strong>Daño:</strong> ${item.daño}<br>`;
                             }
+
                             if (item.alcance) {
                                 content += `<strong>Alcance:</strong> ${item.alcance}<br>`;
                             }
@@ -155,12 +172,43 @@
                 document.getElementById('info').innerText = 'Error al cargar la información.';
             });
 
-        // Función para guardar el estado de los diamantes
+        // Función para guardar el estado de los diamantes por nivel
         function saveDiamondsState(level) {
             const diamonds = document.querySelectorAll(`[data-diamond-id^="nivel${level}-diamond"]`);
             const diamondsState = Array.from(diamonds).map(diamond => diamond.classList.contains('active'));
             saveState(`nivel${level}-diamonds`, diamondsState);
         }
+
+        // Función para guardar el estado de los diamantes de Puntos de Hechicería
+        function saveHechiceriaDiamondsState() {
+            const diamonds = document.querySelectorAll('#hechiceria-diamonds .diamond');
+            const diamondsState = Array.from(diamonds).map(diamond => diamond.classList.contains('active'));
+            saveState('hechiceriaDiamondsState', diamondsState);
+        }
+
+        // Restaurar el estado de los diamantes de Puntos de Hechicería
+        function restoreHechiceriaDiamondsState() {
+            const savedDiamondsState = loadState('hechiceriaDiamondsState');
+            if (savedDiamondsState) {
+                const diamonds = document.querySelectorAll('#hechiceria-diamonds .diamond');
+                diamonds.forEach((diamond, index) => {
+                    if (savedDiamondsState[index]) {
+                        diamond.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // Cambiar color de los diamantes de Puntos de Hechicería al hacer clic
+        document.querySelectorAll('#hechiceria-diamonds .diamond').forEach(diamond => {
+            diamond.addEventListener('click', function() {
+                diamond.classList.toggle('active');
+                saveHechiceriaDiamondsState();
+            });
+        });
+
+        // Restaurar estado al cargar la página
+        restoreHechiceriaDiamondsState();
 
         // Limpiar localStorage y refrescar la página
         document.getElementById('limpiarCache').addEventListener('click', function() {
