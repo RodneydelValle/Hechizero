@@ -16,8 +16,13 @@
                 <div class="value">17</div>
             </div>
             <div class="box">
-                <div class="title">VIDA</div>
-                <div id="value" class="value">97</div>
+                <div class="life-container">
+                    <div class="title">VIDA</div>
+                    <div class="value-container">
+                        <img src="imagenes/corazon.svg" alt="Vida" class="life-image">
+                        <div id="value" class="value">97</div>
+                    </div>
+                </div>
                 <div class="buttons">
                     <input id="inputAmount" class="input-value" type="number" value="1">
                     <div class="button" onclick="changeValue(-1)">-</div>
@@ -25,6 +30,7 @@
                     <div class="button" onclick="resetValue()">Reestablecer</div>
                 </div>
             </div>
+            
         </div>
 
         <br>
@@ -251,7 +257,18 @@
         });
 
    
-        function changeValue(direction) {
+
+        const originalValue = 97; // Guardamos el valor inicial de la vida
+
+function changeValue(direction) {
+    const valueElement = document.getElementById('value');
+    const inputAmount = document.getElementById('inputAmount').value;
+    let currentValue = parseInt(svalueElement.textContent);
+    const amount = parseInt(inputAmount) || 0;  // Verifica que el valor sea un número, si no lo es, usa 0
+    currentValue += amount * direction;
+    valueElement.textContent = currentValue;
+}
+function changeValue(direction) {
             const valueElement = document.getElementById('value');
             const inputAmount = document.getElementById('inputAmount').value;
             let currentValue = parseInt(valueElement.textContent);
@@ -263,16 +280,6 @@
             const valueElement = document.getElementById('value');
             valueElement.textContent = originalValue; // Restablece el valor a la vida inicial
         }
-        const originalValue = 97; // Guardamos el valor inicial de la vida
-
-function changeValue(direction) {
-    const valueElement = document.getElementById('value');
-    const inputAmount = document.getElementById('inputAmount').value;
-    let currentValue = parseInt(svalueElement.textContent);
-    const amount = parseInt(inputAmount) || 0;  // Verifica que el valor sea un número, si no lo es, usa 0
-    currentValue += amount * direction;
-    valueElement.textContent = currentValue;
-}
   
     </script>
     </body>
