@@ -87,3 +87,28 @@ h2 {
 .diamond.active {
     background-color: #fffb00;
 }
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.box {
+    background-color: #808080;
+    color: black;
+    text-align: center;
+    padding: 0px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.value {
+    font-size: 28px;
+    font-weight: bold;
+}
