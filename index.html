@@ -1,61 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar Información por Niveles</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza el CSS aquí -->
-</head>
-<body>
-    <h1>Ymir Hechizera nivel 10</h1>
-    <div class="container">
-        <div class="box">
-            <div class="title">APTITUD MÁGICA</div>
-            <div class="value">CAR</div>
-        </div>
-        <div class="box">
-            <div class="title">CD DE SALVACIÓN<br>DE CONJURO</div>
-            <div class="value">17</div>
-        </div>
-        <div class="box">
-            <div class="title">MODIFICADOR DE<br>ATAQUE MÁGICO</div>
-            <div class="value">+9</div>
-        </div>
-    </div>
-    <!-- Puntos de Hechicería -->
-    <div id="puntos-hechiceria">
-        <h2>Puntos de Hechicería</h2>
-        <div id="hechiceria-diamonds">
-            <!-- Filas de diamantes -->
-            <div class="diamond-row">
-                <div class="diamond" data-diamond-id="diamond1"></div>
-                <div class="diamond" data-diamond-id="diamond2"></div>
-                <div class="diamond" data-diamond-id="diamond3"></div>
-                <div class="diamond" data-diamond-id="diamond4"></div>
-                <div class="diamond" data-diamond-id="diamond5"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mostrar Información por Niveles</title>
+        <link rel="stylesheet" href="styles.css"> <!-- Enlaza el CSS aquí -->
+    </head>
+    <body>
+        <h1>Ymir Hechizera nivel 10</h1>
+        <div class="container">
+            <div class="box">
+                <br>
+                <div class="title">ARMADURA</div>
+
+                <div class="value">17</div>
             </div>
-            <div class="diamond-row">
-                <div class="diamond" data-diamond-id="diamond6"></div>
-                <div class="diamond" data-diamond-id="diamond7"></div>
-                <div class="diamond" data-diamond-id="diamond8"></div>
-                <div class="diamond" data-diamond-id="diamond9"></div>
-                <div class="diamond" data-diamond-id="diamond10"></div>
+            <div class="box">
+                <div class="title">VIDA</div>
+                <div id="value" class="value">97</div>
+                <div class="buttons">
+                    <input id="inputAmount" class="input-value" type="number" value="1">
+                    <div class="button" onclick="changeValue(-1)">-</div>
+                    <div class="button" onclick="changeValue(1)">+</div>
+                    <div class="button" onclick="resetValue()">Reestablecer</div>
+                </div>
             </div>
         </div>
-    </div>
-<h2>Hechizos</h2>
-    <!-- Hechizos por Niveles -->
-    <div class="container" id="hechizos">
-        
-        <div class="" id="info">Cargando información...</div>
-    </div>
 
-    <!-- Botón para limpiar el cache -->
-    <div id="limpiar">
-        <button id="limpiarCache">Limpiar Hoja</button>
-    </div>
+        <br>
+        <div class="container">
 
-    <script>
+            <div class="box">
+                <div class="title">APTITUD MÁGICA</div>
+                <div class="value">CAR+5</div>
+            </div>
+            <div class="box">
+                <div class="title">CD DE SALVACIÓN<br>DE CONJURO</div>
+                <div class="value">17</div>
+            </div>
+            <div class="box">
+                <div class="title">MODIFICADOR DE<br>ATAQUE MÁGICO</div>
+                <div class="value">+9</div>
+            </div>
+        </div>
+        <!-- Puntos de Hechicería -->
+        <div id="puntos-hechiceria">
+            <h2>Puntos de Hechicería</h2>
+            <div id="hechiceria-diamonds">
+                <!-- Filas de diamantes -->
+                <div class="diamond-row">
+                    <div class="diamond" data-diamond-id="diamond1"></div>
+                    <div class="diamond" data-diamond-id="diamond2"></div>
+                    <div class="diamond" data-diamond-id="diamond3"></div>
+                    <div class="diamond" data-diamond-id="diamond4"></div>
+                    <div class="diamond" data-diamond-id="diamond5"></div>
+                </div>
+                <div class="diamond-row">
+                    <div class="diamond" data-diamond-id="diamond6"></div>
+                    <div class="diamond" data-diamond-id="diamond7"></div>
+                    <div class="diamond" data-diamond-id="diamond8"></div>
+                    <div class="diamond" data-diamond-id="diamond9"></div>
+                    <div class="diamond" data-diamond-id="diamond10"></div>
+                </div>
+            </div>
+        </div>
+        <h2>Hechizos</h2>
+        <!-- Hechizos por Niveles -->
+        <div class="container" id="hechizos">
+
+            <div class id="info">Cargando información...</div>
+        </div>
+
+        <!-- Botón para limpiar el cache -->
+        <div id="limpiar">
+            <button id="limpiarCache">Limpiar Hoja</button>
+        </div>
+
+        <script>
         // Función para guardar el estado en localStorage
         function saveState(key, value) {
             localStorage.setItem(key, JSON.stringify(value));
@@ -152,16 +173,16 @@
 
                             // Solo agregar las filas si tienen valor
                             if (item.daño) {
-                                content += `<strong>Daño:</strong> ${item.daño}<br>`;
+                                content += `<strong><br>Daño:</strong> ${item.daño}<br>`;
                             }
 
                             if (item.alcance) {
-                                content += `<strong>Alcance:</strong> ${item.alcance}<br>`;
+                                content += `<strong><br>Alcance:</strong> ${item.alcance}<br>`;
                             }
                             if (item.Concentracion) {
-                                content += `<strong>Concentración:</strong> ${item.Concentracion}<br>`;
+                                content += `<strong><br>Concentración:</strong> ${item.Concentracion}<br>`;
                             }
-                            content += `<strong>Descripción:</strong> ${item.descripcion}<br>`;
+                            content += `<strong><br>Descripción:</strong> ${item.descripcion}<br>`;
                             content += '</div>';
 
                             itemDiv.innerHTML = content;
@@ -228,6 +249,31 @@
             localStorage.clear(); // Limpiar el cache local
             location.reload(); // Recargar la página
         });
+
+   
+        function changeValue(direction) {
+            const valueElement = document.getElementById('value');
+            const inputAmount = document.getElementById('inputAmount').value;
+            let currentValue = parseInt(valueElement.textContent);
+            const amount = parseInt(inputAmount) || 0;  // Verifica que el valor sea un número, si no lo es, usa 0
+            currentValue += amount * direction;
+            valueElement.textContent = currentValue;
+        }
+        function resetValue() {
+            const valueElement = document.getElementById('value');
+            valueElement.textContent = originalValue; // Restablece el valor a la vida inicial
+        }
+        const originalValue = 97; // Guardamos el valor inicial de la vida
+
+function changeValue(direction) {
+    const valueElement = document.getElementById('value');
+    const inputAmount = document.getElementById('inputAmount').value;
+    let currentValue = parseInt(svalueElement.textContent);
+    const amount = parseInt(inputAmount) || 0;  // Verifica que el valor sea un número, si no lo es, usa 0
+    currentValue += amount * direction;
+    valueElement.textContent = currentValue;
+}
+  
     </script>
-</body>
+    </body>
 </html>
