@@ -10,7 +10,7 @@
     },
 
         {
-          "nombre": "Rayo de Hechicería : 1d12 (ATTAQUE)",
+          "nombre": "Rayo de Hechicería : 1d12 (ATAQUE MAGICO)",
           "nivel": 1,
           "daño": "1d12",
           "Concentracion": "10 minutos",
@@ -19,51 +19,83 @@
         },
 
     
- {
-          "nombre": "Imagen Múltiple",
-          "nivel": 1,
-          "daño": "",
-          "alcance": "PERSONAL",
-          "descripcion": "Tres duplicados ilusorios de ti mismo aparecen en tu espacio. Hasta que el conjuro finalice, las copias se mueven contigo e imitan tus acciones, intercambiando su posición de manera que resulta imposible saber qué imagen es real. Puedes usar tu acción para disipar las copias ilusorias. Cada vez que una criatura te elija como objetivo de un ataque mientras dure el conjuro, lanza un d20 para determinar si el ataque tiene por objetivo a uno de tus dobles en vez de a ti. Si tienes tres copias, debes sacar un 6 o más para cambiar el objetivo del ataque a un doble. Con dos copias, debes sacar un 8 o más. Con una copia, debes sacar un 11 o más. La CA de las copias es 10 + tu modificador de Destreza. Si un ataque impacta a un doble, el doble es destruido. Un doble sólo puede ser destruido por un ataque que le impacte. Ignora todo el resto de daño y efectos. El conjuro finaliza cuando las tres copias son destruidas. Una criatura no se ve afectada por el conjuro si no puede ver, si depende de otro sentido distinto a la vista, como la vista ciega, o si puede percibir las ilusiones como falsas, como con visión verdadera."
-          
-        },
+
+
 
       {
-          "nombre": "Elemento 2",
-          "nivel": 2,
-          "daño": "15",
-          "alcance": "10m",
-          "descripcion": "Descripción del elemento 2."
-      },
+        "nombre": "Tormenta de Bolas de Nieve de Snilloc : 3D6",
+        "nivel": 2,
+        "daño": "3D6",
+        "alcance": "90 pies",
+        "descripcion": "Una ráfaga de bolas de nieve mágicas brota de un punto que elijas dentro del alcance. Cada criatura en una esfera de 5 pies de radio centrada en ese punto debe hacer una tirada de salvación de Destreza. Una criatura recibe 3d6 de daño frío en una salvación fallida, o la mitad de daño en una exitosa. A niveles superiores. Cuando lances este conjuro usando una ranura del conjuro de 3° nivel o superior, el daño aumenta en 1d6 por cada nivel de ranura por encima de 2°."
+    },
+    {
+      "nombre": "Paso Brumoso",
+      "nivel": 2,
+      "daño": "",
+      "alcance": "30m",
+      "descripcion": "Rodeado brevemente por una bruma plateada, te teleportas a un máximo de 30 pies (6 casillas, 9 m) hasta un espacio desocupado que puedas ver."
+  },
+  {
+    "nombre": "Imagen Múltiple",
+    "nivel": 2,
+    "daño": "",
+    "alcance": "PERSONAL",
+    "descripcion": "Tres duplicados ilusorios de ti mismo aparecen en tu espacio. Hasta que el conjuro finalice, las copias se mueven contigo e imitan tus acciones, intercambiando su posición de manera que resulta imposible saber qué imagen es real. Puedes usar tu acción para disipar las copias ilusorias. Cada vez que una criatura te elija como objetivo de un ataque mientras dure el conjuro, lanza un d20 para determinar si el ataque tiene por objetivo a uno de tus dobles en vez de a ti. Si tienes tres copias, debes sacar un 6 o más para cambiar el objetivo del ataque a un doble. Con dos copias, debes sacar un 8 o más. Con una copia, debes sacar un 11 o más. La CA de las copias es 10 + tu modificador de Destreza. Si un ataque impacta a un doble, el doble es destruido. Un doble sólo puede ser destruido por un ataque que le impacte. Ignora todo el resto de daño y efectos. El conjuro finaliza cuando las tres copias son destruidas. Una criatura no se ve afectada por el conjuro si no puede ver, si depende de otro sentido distinto a la vista, como la vista ciega, o si puede percibir las ilusiones como falsas, como con visión verdadera."
+    
+  },
 
-      {
-          "nombre": "Elemento 4",
-          "nivel": 4,
-          "daño": "25",
-          "alcance": "20m",
-          "descripcion": "Descripción del elemento 4."
-      },
-      {
-        "nombre": "Muro de Agua",
-        "nivel": 3,
-        "daño": "5D8",
-        "alcance": "120 PIES",
-        "Concentracion": "Hasta 1 Minuto",
-        "CD": "DESTREZA",
-        "descripcion": "Puedes hacer un muro de hasta 60 pies (12 casillas) o un anillo de 4 casillas. A niveles superiores, cuando lanzas este hechizo usando un espacio de conjuros de nivel 5 o superior, el daño se incrementa en 1d8 por cada nivel de espacio de conjuros por encima de nivel 4."
-      },
+    {
+      "nombre": "Muro de Agua : 5D8",
+      "nivel": 3,
+      "daño": "5D8",
+      "alcance": "120 pies",
+      "concentracion": "Hasta 1 minuto",
+      "CD": "Destreza",
+      "descripcion": "Creas un muro de agua en una superficie sólida dentro del alcance. Puedes hacer un muro de hasta 60 pies (12 casillas, 18 m) de largo, 20 pies (4 casillas, 6 m) de alto, y 1 pie (30 cm) de ancho, o un muro anillado de hasta 20 pies (4 casillas, 6 m) de diámetro, 20 pies (4 casillas, 6 m) de alto, y 1 pie (30 cm) de ancho. Este muro es opaco y persiste hasta que finaliza la duración del conjuro. Cuando el muro aparece, cada criatura dentro del área debe realizar una tirada de salvación de Destreza. Con una salvación fallida, la criatura sufre 5d8 puntos de daño por agua, o la mitad del daño con una salvación con éxito. Una cara del muro, seleccionada por ti cuando lanzas el conjuro, inflige 5d8 puntos de daño a cada criatura que finalice su turno a 10 pies (2 casillas, 3 m) de ese lado o dentro del muro. Una criatura sufre el mismo daño cuando entra en el muro la primera vez en su turno o finaliza el turno allí. El otro lado del muro no hace daño. A niveles superiores. Cuando lanzas este hechizo usando un espacio de conjuros de nivel 5 o superior, el daño se incrementa en 1d8 por cada nivel de espacio de conjuros por encima de nivel 4."
+    },
+    
+
+
+
       
       {
-        "nombre": "Bola de Fuego",
+        "nombre": "Bola de Fuego : 8D6",
         "nivel": 3,
-        "daño": "8d6",
+        "daño": "8D6",
         "alcance": "120 pies",
         "concentracion": "No",
         "CD": "Destreza",
         "descripcion": "Un rayo brillante resplandece desde tu dedo apuntando a un lugar que eliges dentro del rango y luego estalla con un rugido grave en una explosión de llamas. Cada criatura en un radio de esfera de 20 pies (4 casillas, 6 m) centrado en ese punto debe realizar una tirada de salvación de Destreza. El objetivo sufre 8d6 puntos de daño por fuego en una salvación fallida, o la mitad del total de daño en una salvación con éxito. El fuego se extiende por las esquinas e incendia objetos inflamables en el área que no estén sujetos ni transportados.\nA niveles superiores: cuando lanzas este hechizo usando un espacio de conjuros de nivel 4 o superior, el daño se incrementa en 1d6 por cada nivel de espacio de conjuros por encima del nivel 3."
       },
+
+      {
+        "nombre": "Marejada : 4D8",
+        "nivel": 3,
+        "daño": "4D8",
+        "alcance": "120 pies",
+        "concentracion": "No",
+        "descripcion": "Conjuras una ola de agua que se estrella en un área dentro del alcance. El área puede tener hasta 30 pies de largo, hasta 10 pies de ancho y hasta 10 pies de altura. Cada criatura en esa área debe hacer una tirada de salvación de Destreza. En una salvación fallida, una criatura recibe 4d8 de daño por golpes y es derribada. En una salvación exitosa, una criatura recibe la mitad de daño y no es derribada. Luego, el agua se extiende por el suelo en todas las direcciones, extinguiendo las llamas desprotegidas."
+      },
       
       
+      {
+        "nombre": "Piel Pétrea",
+        "nivel": 4,
+        "daño": "",
+        "alcance": "Toque",
+        "Concentracion": "1 hora",
+        "descripcion": "Este conjuro convierte la carne de una criatura voluntaria que hayas tocado en tan dura como la piedra. Hasta que el conjuro finalice, el objetivo tiene resistencia al daño contundente, perforante, y cortante no mágico."
+    },
+    {
+      "nombre": "Tormenta de Hielo : 2d8 Contundente + 4d6 Frío",
+      "nivel": 4,
+      "daño": "2d8+4d6",
+      "alcance": "300 pies",
+      "Concentracion": "1 hora",
+      "descripcion": "Una tormenta de trozos de hielo duros como la roca golpea el suelo en un cilindro de radio 20 pies (4 casillas, 6 m) por 40 pies (8 casillas, 12 m) de alto centrado en un punto dentro del alcance. Cada criatura en el cilindro debe realizar una tirada de salvación de Destreza. Una criatura sufre 2d8 puntos de daño contundente y 4d6 puntos de daño por frío con una salvación fracasada, o mitad de daño con una salvación con éxito. Los trozos de roca de hielo convierten el área de la tormenta en terreno difícil hasta el final del siguiente turno. A niveles superiores. Cuando lanzas este hechizo usando un espacio de conjuros de nivel 5 o superior, el daño contundente se incrementa en 1d8 por cada nivel del espacio de conjuro por encima de nivel 4."
+    },
+    
       {
         "nombre": "Cono de Frío",
         "nivel": 5,
