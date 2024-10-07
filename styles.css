@@ -100,6 +100,7 @@ h2 {
     padding: 0px;
     width: 120px;
     border-radius: 5px;
+    
 }
 
 .title {
@@ -119,15 +120,42 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #008cd7;
+    display: flex;
+    align-items: center; 
 }
 .button:hover {
     background-color: #eaff00;
 }
-
-
-
-
-.input-value {
-    width: 80%;
-    font-size: 18px;
+.calaca {
+    width: 30px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantener la proporción de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el input */
 }
+
+
+
+.life-container {
+  
+    display: flex;
+    flex-direction: column; /* Colocar título y contenedor de valor en columna */
+    align-items: center; /* Alinear horizontalmente */
+}
+
+.value-container {
+    display: flex; /* Usar flexbox para alinear imagen y valor en fila */
+    align-items: center; /* Alinear verticalmente en el centro */
+    margin-top: 5px; /* Espacio entre el título y el valor */
+}
+
+.life-image {
+    display: flex; 
+    
+    width: 30px; /* Ajusta el tamaño de la imagen según necesites */
+    height: 30px; /* Ajusta el tamaño de la imagen según necesites */
+    margin-right: 8px; /* Espacio entre la imagen y el valor */
+}
+.input-value {
+
+    width: 50%;
+}
+
